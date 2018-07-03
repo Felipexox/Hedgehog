@@ -4,21 +4,26 @@ using UnityEngine;
 
 public class CameraManager : MonoBehaviour {
     private GameObject playerReference;
+    public static CameraManager instance;
     [SerializeField]
     private float smooth = 3;
     private Vector3 velocity = Vector3.zero;
+    [SerializeField]
+    private Cinemachine.CinemachineVirtualCamera virtualCamera;
+    private void Awake()
+    {
+        instance = this;
+    }
     private void Start()
     {
         playerReference = GameObject.FindGameObjectWithTag("Player");
+      
     }
-    private void FixedUpdate()
+    public void Update()
     {
-        if(playerReference != null)
+        if (playerReference != null)
         {
-            Vector3 playerPosition = playerReference.transform.position;
-            playerPosition.z = transform.position.z;
-            Vector3 newPosition = Vector3.Slerp(transform.position , playerPosition,  smooth * 0.05f);
-            transform.position = newPosition;
+            virtualCamera.Follow = playerReference.transform;
         }
     }
 }

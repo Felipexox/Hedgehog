@@ -18,6 +18,7 @@ public class Player : MonoBehaviour {
     {
         if (!isStoped)
         {
+
             Vector2 currentRotation = transform.localEulerAngles;
             Vector2 currentVelocity = rigi.velocity;
             Vector3 deltVector = rigi.velocity - currentRotation;
@@ -39,6 +40,7 @@ public class Player : MonoBehaviour {
 
             }
             transform.eulerAngles = newRotation;
+
             Die();
         }
     }

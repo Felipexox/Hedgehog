@@ -10,14 +10,18 @@ public class UIManager : MonoBehaviour {
     private GameObject screenLose;
     [SerializeField]
     private GameObject screenMenu;
-
-
+    [SerializeField]
+    private Text coinsText;
 
     private void Awake()
     {
         instance = this;
     }
 
+    private void Update()
+    {
+        coinsText.text = CoinsManager.Instance.CurrentCoins + "";
+    }
     public void WinGame()
     {
         StartCoroutine(AnimationScreensOpen(screenWin, 5));

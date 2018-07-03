@@ -15,12 +15,19 @@ public class CoinsManager : MonoBehaviour {
     {
         maxCoinLevel = Object.FindObjectsOfType<Coin>().Length;
     }
-    public int GetCoinsTotal
+    public int CoinsTotal
     {
         get {
             if (currentCoinLevel > maxCoinLevel)
                 return maxCoinLevel;
             return maxCoinLevel;
+        }
+    }
+    public int CurrentCoins
+    {
+        get
+        {
+            return currentCoinLevel;
         }
     }
     public void AddCoin()
